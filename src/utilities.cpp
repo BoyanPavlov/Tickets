@@ -79,3 +79,34 @@ int stoi_my(const char *text)
 
     return num * sign;
 }
+
+void clearString(char *&str)
+{
+    delete[] str;
+    str = nullptr;
+}
+
+char *allocateStr(int size)
+{
+    try
+    {
+        char *str = new char[size];
+        return str;
+    }
+    catch (const std::bad_alloc &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    return nullptr;
+}
+
+void strDub(char *&dest, const char *src)
+{
+    clearString(dest);
+    if (!src)
+    {
+        throw std::invalid_argument("nullptr given");
+    }
+    dest = allocateStr(strLen(src) + 1);
+    strCpy(dest, src);
+}

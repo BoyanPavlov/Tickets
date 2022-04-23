@@ -11,4 +11,9 @@ int stoi_my(const char *text);
 
 bool isNum(char c);
 
+void clearString(char *&str);
+
+void strDub(char *dest, const char *src);
+
+char *allocateStr(int size);
 #endif // _UTILITIES_
