@@ -1,6 +1,5 @@
 #include "ticketSeller.h"
 #include "utilities.h"
-
 #include <fstream>
 
 void TicketSeller::loadFromFile(char *path) {}
@@ -9,11 +8,6 @@ TicketSeller::TicketSeller(vector<Room> given_rooms)
 {
     m_rooms = given_rooms;
 }
-
-// adds event - if room is taken - do NOT add - throw exception or text
-// Въвежда дата, име на представлението и зала и добавя ново представление
-// с въведената информация.Ако в тази зала вече има друго представление на същата дата,
-// добавянето да не се извършва и да се изведе грешка.
 
 void TicketSeller::addEvent(Date &dateOfEvent, char *nameOfEvent, const Room &roomOfEvent)
 {
@@ -110,11 +104,11 @@ void TicketSeller::reserveTicket(char *nameOfEvent, Date &dateOfEvent, int row,
 // mark as taken if password is correct
 void TicketSeller::buyTicket(char *nameOfEvent, Date &dateOfEvent, int row, int seat, char *password = nullptr)
 {
-    Ticket* tempTicket = nullptr;
+    Ticket *tempTicket = nullptr;
 
     for (int i = 0; i < m_tickets.size(); i++)
     {
-        //evnt > staya > seat > ako e reserve ima tiket > seata go pravim na taken i iskam parola
+        // evnt > staya > seat > ako e reserve ima tiket > seata go pravim na taken i iskam parola
     }
 
     for (int i = 0; i < m_events.size(); i++)
@@ -143,10 +137,22 @@ void TicketSeller::buyTicket(char *nameOfEvent, Date &dateOfEvent, int row, int 
         }
     }
 }
+
 // print all reserved, but not taken seats - printed in report-NAME_DATE.txt
 // it can be name of event - print all dates of this event ???
 // it can be date - print all events on this date
-void TicketSeller::listOfReservations(char *input) {}
+void TicketSeller::listOfReservations(char *input = nullptr)
+{
+
+    for (int i = 0; i < m_tickets.size(); i++)
+    {
+        // std::ofstream out(report - NAME_DATE.txt);...
+        if (m_tickets[i].getSeat().isSeatReserved() && m_tickets[i].getSeat().isSeatFree())
+        {
+            // out << m_tickets[i].getSeat();
+        }
+    }
+}
 
 void TicketSeller::printBoughtTickets(int from, int to, int room) {}
 void TicketSeller::printBoughtTickets(int from, int to, char *room) {}

@@ -122,3 +122,22 @@ bool checkIfPathIsValid(char *path)
     }
     return true;
 }
+
+char *strCat(char *text1, char *text2)
+{
+    int len1 = strLen(text1);
+    int len2 = strLen(text2);
+    int len = len1 + len2;
+    char *temp = new char[len + 1]();
+    int i = 0;
+    for (i = 0; i < len1; i++)
+    {
+        temp[i] = text1[i];
+    }
+    for (int j = 0; j < len2; j++)
+    {
+        temp[i] = text2[j];
+        i++;
+    }
+    return temp;
+}

@@ -15,7 +15,7 @@ struct eventLinker
 class TicketSeller
 {
 private:
-    int m_numberOfEvents;
+    int m_numberOfEvents = 0;
 
     vector<eventLinker> m_linked_events_and_rooms;
 
@@ -52,7 +52,7 @@ public:
     // print all reserved, but not taken seats - printed in report-NAME_DATE.txt
     // it can be name of event - print all dates of this event ???
     // it can be date - print all events on this date
-    void listOfReservations(char *input);
+    void listOfReservations(char *input = nullptr);
 
     void printBoughtTickets(int from, int to, int room);
     void printBoughtTickets(int from, int to, char *room);

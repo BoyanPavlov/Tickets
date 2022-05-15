@@ -7,6 +7,8 @@ int strLen(const char *str);
 
 int strCmp(const char *text1, const char *text2);
 
+char *strCat(char *text1, char *text2);
+
 int stoi_my(const char *text);
 
 bool isNum(char c);

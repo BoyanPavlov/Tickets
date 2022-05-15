@@ -13,7 +13,8 @@ private:
 public:
     Seat();
 
-    Seat(int row, int mol, bool isFree, bool isReserved);
+    Seat(int row, int col, bool isFree, bool isReserved);
+    Seat(int row, int col);
 
     bool operator==(const Seat &rhs);
 

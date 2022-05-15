@@ -59,6 +59,10 @@ Seat::Seat()
     : m_row(-1), m_col(-1), m_isFree(true), m_isReserved(false)
 {
 }
+Seat::Seat(int row, int col)
+    : m_row(row), m_col(col), m_isFree(true), m_isReserved(false)
+{
+}
 
 Seat::Seat(int row, int col, bool isFree, bool isReserved)
     : m_row(row), m_col(col), m_isFree(isFree), m_isReserved(isReserved)

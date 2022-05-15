@@ -40,7 +40,7 @@ void Room::reserveASeat(int numberOfRow, int numberOfCol)
                 if (m_seats[i].isSeatFree() && !m_seats[i].isSeatReserved())
                 {
                     m_seats[i].reserveSeat();
-                    cout << "Seat at "<< numberOfRow << ' ' << numberOfCol << " reserved\n";
+                    cout << "Seat at " << numberOfRow << ' ' << numberOfCol << " reserved\n";
                 }
                 else
                 {
@@ -177,4 +177,5 @@ std::ostream &operator<<(std::ostream &out, const Room &obj)
     {
         out << obj.m_seats[i].getRowOfSeat() << ' ' << obj.m_seats[i].getColOfSeat() << "  ";
     }
+    return out;
 }
