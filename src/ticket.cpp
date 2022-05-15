@@ -79,10 +79,16 @@ int Ticket::getRow() const
 {
     return m_row;
 }
-Seat &Ticket::getSeat() 
+const Seat &Ticket::getSeat()const
 {
     return m_seat;
 }
+
+Seat Ticket::getSeat()
+{
+    return m_seat;
+}
+
 char *Ticket::getPassword() const
 {
     return m_password;
@@ -123,7 +129,6 @@ void Ticket::TakeATicket()
     }
 }
 
-
 Ticket::Ticket()
     : m_nameOfEvent(nullptr), m_roomNumber(-1), m_row(-1),
       m_password(nullptr)
@@ -133,4 +138,23 @@ Ticket::Ticket()
 void Ticket::setRoom(int room)
 {
     m_roomNumber = room;
+}
+
+int Ticket::getRoomNumber() const
+{
+    return m_roomNumber;
+}
+
+std::ostream &operator<<(std::ostream &out, const Ticket &obj)
+{
+    //     char *m_nameOfEvent = nullptr;
+    //     int m_roomNumber = -1;
+    //     int m_row = -1;
+    //     Seat m_seat;
+    //     char *m_password = nullptr;
+    //     Date m_date;
+
+    out << obj.getName() << ' ' << obj.getRoomNumber() << ' ' << obj.getRow() << ' '
+        << obj.getSeat() << ' ' << obj.getPassword() << ' ' << ' ' << obj.getDate() << '\n';
+    return out;
 }

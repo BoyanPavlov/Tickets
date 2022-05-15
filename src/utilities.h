@@ -16,4 +16,6 @@ void clearString(char *&str);
 void strDub(char *dest, const char *src);
 
 char *allocateStr(int size);
+
+bool checkIfPathIsValid(char *path);
 #endif // _UTILITIES_

@@ -1,4 +1,4 @@
-#include "../catch.h"
+#include "../catch.hpp"
 #include <iostream>
 #include <string>
 

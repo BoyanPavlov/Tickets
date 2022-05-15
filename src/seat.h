@@ -1,18 +1,19 @@
+#include <iostream>
 #ifndef _SEAT_
 #define _SEAT_
 
 class Seat
 {
 private:
-    int m_numberOfSeat;
+    int m_row;
+    int m_col;
     bool m_isFree;
     bool m_isReserved;
 
 public:
     Seat();
 
-    Seat(int numberOfSeat, bool isFree, bool isReserved);
-    Seat(int numberOfSeat);
+    Seat(int row, int mol, bool isFree, bool isReserved);
 
     bool operator==(const Seat &rhs);
 
@@ -20,11 +21,15 @@ public:
     void takeASeat();
     void freeASeat();
 
-    void setNumberOfASeat(int);
-    
-    int getNumberOfSeat() const;
+    void setColOfASeat(int);
+    void setRowOfASeat(int);
+
+    int getColOfSeat() const;
+    int getRowOfSeat() const;
     bool isSeatFree() const;
     bool isSeatReserved() const;
+
+    friend std::ostream &operator<<(std::ostream &out, const Seat &obj);
 };
 
 #endif //_SEAT_

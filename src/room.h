@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+using std::vector;
+
 #ifndef _ROOM_
 #define _ROOM_
 
@@ -8,16 +11,9 @@ class Room
 {
 private:
     int m_numberOfRoom;
-    int m_numberOfSeats;
-    int m_numberOfRows;
-    Ticket **m_tickets;
+    vector<Seat> m_seats;
 
-    int m_numberOfFreeTickets;
-    int m_numberOfReserved;
-    int m_numberOfTakenTickets;
-
-    bool checkIfSeatIsValid(int row, Seat given_seat);
-    bool checkIfRowIsValid(int row);
+    bool checkIfSeatIsValid(int row, int col);
 
 public:
     Room();
@@ -25,8 +21,7 @@ public:
     Room &operator=(const Room &);
     Room(const Room &);
 
-    Room(int numberOfRoom, int rows, int numberOfSeats, Ticket **tickets);
-    ~Room();
+    Room(int numberOfRoom, int rows, int cols, vector<Seat> seats);
 
     void reserveASeat(int numberOfSeat, int numberOfRow);
     void freeASeat(int numberOfSeat, int numberOfRow);
@@ -35,12 +30,17 @@ public:
     int getNumberOfRoom() const;
     int getNumberOfSeats() const;
     int getNumberOfRows() const;
+    int getNumberOfCols() const;
+
     int getNumberOfFreeTickets() const;
     int getNumberOfReservedTickets() const;
     int getNumberOfTakenTickets() const;
-    Ticket **getTickets();
+
+    vector<Seat> getSeats();
 
     void setNumberOfRoom(int number);
+
+    friend std::ostream &operator<<(std::ostream &out, const Room &obj);
 };
 
 #endif //_ROOM_

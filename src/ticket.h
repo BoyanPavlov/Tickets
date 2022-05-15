@@ -1,18 +1,18 @@
 #include "date.h"
 #include "utilities.h"
 #include "seat.h"
+#include <vector>
+
 #ifndef _TICKET_
 #define _TICKET_
 
 class Ticket
 {
 private:
-    char *m_nameOfEvent = nullptr;
     int m_roomNumber = -1;
-    int m_row = -1;
     Seat m_seat;
     char *m_password = nullptr;
-    Date m_date;
+    Event *m_event = nullptr;
 
 public:
     Ticket();
@@ -39,8 +39,14 @@ public:
     char *getName() const;
     const Date &getDate() const;
     int getRow() const;
-    Seat &getSeat();
+    const Seat &getSeat() const;
+
+    Seat getSeat();
+
     char *getPassword() const;
+    int getRoomNumber() const;
+
+    friend std::ostream &operator<<(std::ostream &out, const Ticket &);
 };
 
 #endif // _TICKET_

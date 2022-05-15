@@ -1,23 +1,13 @@
 #include "seat.h"
+#include <iostream>
 
-Seat::Seat(int numberOfSeat, bool isFree, bool isReserved)
-    : m_numberOfSeat(numberOfSeat), m_isFree(isFree), m_isReserved(isReserved)
+void Seat::setColOfASeat(int col)
 {
+    m_col = col;
 }
-
-Seat::Seat(int numberOfSeat)
-    : m_numberOfSeat(numberOfSeat), m_isFree(true), m_isReserved(false)
+void Seat::setRowOfASeat(int row)
 {
-}
-
-Seat::Seat()
-    : m_numberOfSeat(-1), m_isFree(true), m_isReserved(false)
-{
-}
-
-void Seat::setNumberOfASeat(int numberOfSeat)
-{
-    m_numberOfSeat = numberOfSeat;
+    m_row = row;
 }
 
 void Seat::reserveSeat()
@@ -38,17 +28,24 @@ void Seat::freeASeat()
 
 bool Seat::operator==(const Seat &rhs)
 {
-    if (this->m_numberOfSeat == rhs.m_numberOfSeat)
+    if (this->m_row == rhs.m_row &&
+        m_col == rhs.m_row)
     {
         return true;
     }
     return false;
 }
 
-int Seat::getNumberOfSeat() const
+int Seat::getColOfSeat() const
 {
-    return m_numberOfSeat;
+    return m_col;
 }
+
+int Seat::getRowOfSeat() const
+{
+    return m_row;
+}
+
 bool Seat::isSeatFree() const
 {
     return m_isFree;
@@ -56,4 +53,21 @@ bool Seat::isSeatFree() const
 bool Seat::isSeatReserved() const
 {
     return m_isReserved;
+}
+
+Seat::Seat()
+    : m_row(-1), m_col(-1), m_isFree(true), m_isReserved(false)
+{
+}
+
+Seat::Seat(int row, int col, bool isFree, bool isReserved)
+    : m_row(row), m_col(col), m_isFree(isFree), m_isReserved(isReserved)
+{
+}
+
+std::ostream &operator<<(std::ostream &out, const Seat &obj)
+{
+    out << obj.getRowOfSeat() << ' ' << obj.getColOfSeat() << "  isSeatFree:" << obj.isSeatFree()
+        << " isSeatReserved" << obj.isSeatReserved() << "\n";
+    return out;
 }

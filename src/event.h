@@ -10,7 +10,7 @@ class Event
 {
 private:
     char *m_name = nullptr;
-    Room m_room;
+    Room *m_room;
     Date m_date;
 
 public:
@@ -25,12 +25,14 @@ public:
     bool operator==(const Event &rhs);
 
     void setName(char *name);
-    void setRoom(const Room &room);
+    void setRoom(Room *room);
     void setDate(const Date &date);
 
     char *getName() const;
     Room *getRoom();
     Date getDate() const;
+
+    friend std::ostream &operator<<(std::ostream &out, Event &obj);
 };
 
 #endif //_EVENT_

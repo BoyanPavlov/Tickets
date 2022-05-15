@@ -1,5 +1,6 @@
 #include "utilities.h"
 #include <iostream>
+#include <fstream>
 
 void strCpy(char *dest, const char *src)
 {
@@ -105,8 +106,19 @@ void strDub(char *&dest, const char *src)
     clearString(dest);
     if (!src)
     {
-        throw std::invalid_argument("nullptr given");
+        std::cout << "null ptr given\n";
+        return;
     }
     dest = allocateStr(strLen(src) + 1);
     strCpy(dest, src);
+}
+
+bool checkIfPathIsValid(char *path)
+{
+    std::ifstream in(path, std::ios::in);
+    if (!in)
+    {
+        return false;
+    }
+    return true;
 }

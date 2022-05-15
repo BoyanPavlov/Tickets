@@ -1,5 +1,6 @@
 #ifndef _DATE_
 #define _DATE_
+#include <iostream>
 
 enum Months
 {
@@ -29,6 +30,7 @@ private:
 
 public:
     Date();
+    Date(char *date);
     Date(const int year, const int month, const int day);
     bool operator==(const Date &);
 
@@ -39,6 +41,8 @@ public:
     void setDay(const int day);
     void setMonth(const int month);
     void setYear(const int year);
+
+    friend std::ostream &operator<<(std::ostream &out, const Date &obj);
 };
 
 #endif // _DATE_

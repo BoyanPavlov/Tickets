@@ -1,4 +1,3 @@
-#include <iostream>
 #include "date.h"
 
 bool Date::isLeap(const int year)
@@ -107,4 +106,18 @@ Date::Date()
       m_month(-1),
       m_day(-1)
 {
+}
+
+std::ostream &operator<<(std::ostream &out, const Date &obj)
+{
+    // int m_year;
+    // int m_month;
+    // int m_day;
+    out << obj.getYear() << "." << obj.getMonth() << "." << obj.getYear() << "\n";
+    return out;
+}
+
+Date::Date(char *date)
+{
+    
 }
