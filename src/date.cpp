@@ -1,5 +1,5 @@
 #include <iostream>
-#include "date.hpp"
+#include "date.h"
 
 bool Date::isLeap(const int year)
 {
@@ -53,33 +53,18 @@ bool Date::checkIfDateIsValid()
 }
 
 Date::Date(const int year, const int month, const int day)
-    : m_day(day), m_month(month), m_year(year)
+// : m_day(day), m_month(month), m_year(year)
 {
     if (!checkIfDateIsValid())
     {
-        throw std::invalid_argument("Invalid date\n");
+        std::cout << "Invalid date\n";
     }
-}
-
-Date::Date(const Date &rhs)
-    : m_day(rhs.m_day), m_month(rhs.m_month), m_year(rhs.m_year)
-{
-    if (!checkIfDateIsValid())
+    else
     {
-        throw std::invalid_argument("Invalid date\n");
+        m_day = day;
+        m_month = month;
+        m_year = year;
     }
-}
-
-Date &Date::operator=(const Date &rhs)
-{
-    m_year = rhs.m_year;
-    m_month = rhs.m_month;
-    m_day = rhs.m_day;
-    return *this;
-}
-
-Date::~Date()
-{
 }
 
 int Date::getDay() const
@@ -106,4 +91,20 @@ void Date::setMonth(int month)
 void Date::setYear(int year)
 {
     m_year = year;
+}
+
+bool Date::operator==(const Date &rhs)
+{
+    if (m_year == rhs.m_year && m_month == rhs.m_month && m_day == rhs.m_day)
+    {
+        return true;
+    }
+    return false;
+}
+
+Date::Date()
+    : m_year(-1),
+      m_month(-1),
+      m_day(-1)
+{
 }

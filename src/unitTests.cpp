@@ -1,9 +1,9 @@
-#include "../catch.hpp"
+#include "../catch.h"
 #include <iostream>
 #include <string>
 
-#include "ticket.hpp"
-#include "date.hpp"
+#include "ticket.h"
+#include "date.h"
 using std::string;
 
 //====================DATE=====================

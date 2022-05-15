@@ -28,12 +28,9 @@ private:
     bool checkIfDateIsValid();
 
 public:
-    Date() = delete;
-
+    Date();
     Date(const int year, const int month, const int day);
-    Date(const Date &rhs);
-    Date &operator=(const Date &rhs);
-    ~Date();
+    bool operator==(const Date &);
 
     int getDay() const;
     int getMonth() const;

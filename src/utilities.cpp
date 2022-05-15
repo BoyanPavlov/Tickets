@@ -1,4 +1,4 @@
-#include "utilities.hpp"
+#include "utilities.h"
 #include <iostream>
 
 void strCpy(char *dest, const char *src)
